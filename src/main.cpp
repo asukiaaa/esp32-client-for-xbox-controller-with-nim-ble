@@ -10,7 +10,6 @@
 */
 
 #include <NimBLEDevice.h>
-// #include <host/ble_hs_pvcy.h>
 
 void scanEndedCB(NimBLEScanResults results);
 
@@ -465,11 +464,8 @@ void setup (){
     Serial.begin(115200);
     Serial.println("Starting NimBLE Client");
     /** Initialize NimBLE, no device name spcified as we are not advertising */
-
     NimBLEDevice::init("");
-    // ble_hs_pvcy_rpa_config(NIMBLE_HOST_ENABLE_RPA);
-    // NimBLEDevice::setMTU(BLE_ATT_MTU_MAX);
-    // NimBLEDevice::setMTU(400);
+    NimBLEDevice::setOwnAddrType(BLE_OWN_ADDR_RANDOM);
     Serial.println("After init");
     
     /** Set the IO capabilities of the device, each option will trigger a different pairing method.
